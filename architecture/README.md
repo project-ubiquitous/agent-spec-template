@@ -9,6 +9,7 @@
 architecture/
 ├─ principles.md      アーキテクチャ原則（疎結合・依存方向・境界）
 ├─ boundaries.md      モジュール境界・レイヤ構成・依存規則（循環依存禁止）
+├─ foundations.md     稼働後に変更困難な基盤決定（ID体系・テナント軸・監査ログ等）
 ├─ capabilities/      ケイパビリティ・マップ（ビジネス/技術能力）
 ├─ context-maps/      コンテキスト図（C4・境界づけられたコンテキスト）
 ├─ domain-models/     機能横断のドメインモデル（機能個別は specs/<feature>/data-model.md）
