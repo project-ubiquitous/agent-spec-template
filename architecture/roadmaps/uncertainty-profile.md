@@ -37,7 +37,7 @@
 | 領域 | 具体化する文書 |
 | --- | --- |
 | モジュール分割・デプロイ単位 | [architecture/principles.md](../principles.md)／[architecture/boundaries.md](../boundaries.md) |
-| 稼働後に変更困難な基盤決定の先行確定 | [architecture/foundations.md](../foundations.md) |
+| 稼働後に変更困難な基盤決定の先行確定 | `architecture/foundations.md`（後続の作業単位で新設） |
 | 複数ベンダ・多数連携への備え | [architecture/integrations/README.md](../integrations/README.md)／[architecture/capabilities/README.md](../capabilities/README.md) |
 | 投機的な一般化の禁止 | [architecture/principles.md](../principles.md)（rule of three・YAGNI） |
 
@@ -54,7 +54,7 @@ scope.md「4.」に記録します。「両振れ対応」の判定基準は、�
 | --- | --- | --- | --- |
 | walking skeleton（本番相当の経路を最小機能で先に疎通させる） | 回収可（打ち切り後も動く最小限が残る） | 回収可（土台として積み増せる） | **両振れ対応**（先行して行ってよい） |
 | 既定のデプロイ単位を単一（モジュラーモノリス）にする | 回収可（統合・運用コストが最小のまま残る） | 回収可（境界が明確なら物理分割は後から可能。[principles.md](../principles.md) 原則2） | **両振れ対応** |
-| 稼働後に変更困難な基盤決定（ID体系・相関ID等）を実装着手前に確定する | 回収可（打ち切り前に手戻りコストを払わずに済む） | 回収可（拡張時の後方互換の土台になる） | **両振れ対応**（[foundations.md](../foundations.md)） |
+| 稼働後に変更困難な基盤決定（ID体系・相関ID等）を実装着手前に確定する | 回収可（打ち切り前に手戻りコストを払わずに済む） | 回収可（拡張時の後方互換の土台になる） | **両振れ対応**（`architecture/foundations.md`。後続の作業単位で新設） |
 | 連携アダプタの「型」を統一する（中間連携基盤そのものは作らない） | 回収可（連携先が増えなくても型の統一自体はコストが小さい） | 回収可（連携数が増えた時点で中間基盤を後から差し込める） | **両振れ対応**（[integrations/README.md](../integrations/README.md)） |
 | 初手からのマイクロサービス分割 | 回収不可（統合済みモノリスへ戻すのは実務上不能。分割コストが無駄になる） | 条件付き回収（実際に拡大した場合のみ） | **拡大時のみ回収可**（既定では行わない。ADR-0009） |
 | 未確定の将来要件を吸収するための汎用パラメータ設計・メタデータ駆動基盤 | 回収不可（使われない抽象化がそのまま負債として残る） | 条件付き回収（想定どおりの拡張が来た場合のみ。多くは想定と異なる形で到来する） | **片方でしか回収できない**（rule of three 適用まで作らない。[principles.md](../principles.md)） |
@@ -75,7 +75,8 @@ scope.md「4.」に記録します。「両振れ対応」の判定基準は、�
 * [scope.md](../../scope.md)「4. 段階・マイルストーン」— 個別プロジェクトの具体的なフェーズ・到達状態
 * [architecture/principles.md](../principles.md) — 分割軸・物理分割の遅延・rule of three
 * [architecture/boundaries.md](../boundaries.md) — デプロイ単位の実体化
-* [architecture/foundations.md](../foundations.md) — 稼働後に変更困難な基盤決定
+* `architecture/foundations.md` — 稼働後に変更困難な基盤決定（本書執筆時点で未作成。後続の作業単位で新設し、
+  新設後は本書からの参照をハイパーリンク化するべきである（SHOULD））
 * [architecture/integrations/README.md](../integrations/README.md) — 複数ベンダ・多数連携への備え
 
 ---
