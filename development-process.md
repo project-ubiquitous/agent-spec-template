@@ -1,8 +1,8 @@
 # 開発プロセス（Development Process）
 
-* Version: 0.5.1（Proposed / ドラフト）
+* Version: 0.5.2（Proposed / ドラフト）
 * Date: 2026-04-01
-* Last amended: 2026-08-26
+* Last amended: 2026-09-06
 * 上位規範: constitution.md（開発憲章）
 
 本書は、constitution.md が下位文書へ委譲する運用詳細の正本（SSoT）です。本書が未整備の事項は「未定義」として扱われ、AIエージェントは自律判断せず人間に諮らなければなりません（憲章「8. ブートストラップ規定」）。本書は憲章に従属し、矛盾する場合は憲章が優先します（MUST）。
@@ -63,6 +63,9 @@ UI を含むプロジェクトでは、上表に加えて次を適用します�
 - 永続データの不可逆操作（削除・マスキング方針等）
 
 > 迷う場合は ADR を作成してよい（憲章「5.」MAY）。
+
+> 共通化・抽象化の要否（rule of three・投機的一般化の禁止・YAGNI）は
+> [architecture/principles.md](architecture/principles.md) を正本とする。本書では複写しない（SSoT）。
 
 ### クラスが影響する事項
 
@@ -205,6 +208,13 @@ ADR の要否（憲章5章）／承認の要否（6章 承認マトリクス）�
 ---
 
 ## 9. 改正履歴
+
+### [0.5.2] - 2026-09-06（Proposed）
+
+* 「1.」の ADR トリガ判定の直後に、共通化・抽象化の要否（rule of three・YAGNI）は
+  [architecture/principles.md](architecture/principles.md) を正本とする旨の参照を追加した
+  （本文の複写はしない。正本記録: [governance/proposals/gp-0021-dev-process-principles-reference.md](governance/proposals/gp-0021-dev-process-principles-reference.md)）。
+* **増分の根拠**: 既存の MUST/MUST NOT を撤廃・反転せず、参照を1件追加したのみであるため **PATCH**。
 
 ### [0.5.1] - 2026-08-26（Proposed）
 
