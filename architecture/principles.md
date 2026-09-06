@@ -1,6 +1,6 @@
 # アーキテクチャ原則（Architecture Principles）
 
-* Version: 0.2.0（Proposed / ドラフト）
+* Version: 0.3.0（Proposed / ドラフト）
 * Date: 2026-04-01
 * Last amended: 2026-09-06
 * 上位規範: constitution.md（開発憲章「アーキテクチャの完全性」）
@@ -28,10 +28,28 @@
    成立している**理由（確定済みのベンダ分割契約、セキュリティゾーンの相違、ランタイム特性の相違、
    組織の既存プラットフォーム標準のいずれか）を ADR に記載しなければならない（MUST。判断根拠の正本は
    [ADR-0009](../adr/adr-0009-default-deployment-unit-policy.md)）。
+8. **rule of three**: 共通部品の抽出は3例目の出現まで行わない。2例目までの重複は許容コストとする
+   （SHOULD）。早すぎる抽出は、2例からは見えない本当の共通点を誤って固定化し、後から誤りを解くコストが
+   最初から重複を許容するコストを上回りやすい。
+9. **投機的一般化の禁止**: 将来要件を吸収するための汎用パラメータ設計・メタデータ駆動を、要件が
+   確定していない段階で導入しない（SHOULD NOT）。想定した拡張は到来しないか、到来しても想定と異なる
+   形で到来することが多い（[architecture/roadmaps/uncertainty-profile.md](roadmaps/uncertainty-profile.md)
+   「片方でしか回収できない投資」）。
+10. **YAGNI（使われない拡張点を作らない）**: 現時点で使用されていない拡張ポイント・設定項目・
+    抽象化を実装しない（SHOULD NOT）。原則8・9と同じ理由（不確実性の下での投機的投資の回避）を
+    「既存コードに新しい抽象を追加する」場面へ適用したものである。
 
 ---
 
 ## 改正履歴
+
+### [0.3.0] - 2026-09-06（Proposed）
+
+* 原則8（rule of three）・原則9（投機的一般化の禁止）・原則10（YAGNI）を新設した。いずれも
+  [uncertainty-profile.md](roadmaps/uncertainty-profile.md)が示す「片方でしか回収できない投資」を
+  作らないという方針を、コードレベルの一般化・抽象化の判断へ具体化する。正本記録:
+  [governance/proposals/gp-0020-anti-speculative-generalization.md](../governance/proposals/gp-0020-anti-speculative-generalization.md)（GP-0020）。
+* **増分の根拠**: 既存原則の撤廃・反転を伴わない新規原則の追加のみであるため **MINOR**。
 
 ### [0.2.0] - 2026-09-06（Proposed）
 
