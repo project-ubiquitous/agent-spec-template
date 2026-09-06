@@ -33,7 +33,7 @@ architecture/principles.md には、モジュール分割・境界に関する�
 * 原則8「rule of three」（共通化は3例目まで待つ。2例までの重複は許容コスト）。
 * 原則9「投機的一般化の禁止」（未確定の将来要件を吸収する汎用設計・メタデータ駆動を導入しない）。
 * 原則10「YAGNI」（使われていない拡張ポイントを実装しない）。
-* いずれも [uncertainty-profile.md](../architecture/roadmaps/uncertainty-profile.md)「片方でしか
+* いずれも [uncertainty-profile.md](../../architecture/roadmaps/uncertainty-profile.md)「片方でしか
   回収できない投資」を作らないという方針のコードレベルでの具体化と位置づける。
 * バージョン: 0.2.0 → **0.3.0（提案・MINOR）**。
 
