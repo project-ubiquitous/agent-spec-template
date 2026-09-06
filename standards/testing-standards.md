@@ -1,7 +1,8 @@
 # テスト標準（Testing Standards）
 
-* Version: 0.3.0（Proposed / ドラフト）
+* Version: 0.4.0（Proposed / ドラフト）
 * Date: 2026-08-20
+* Last amended: 2026-09-06
 * 上位規範: constitution.md（開発憲章「8. 機械的に検証可能なルール」「9. 完了条件」）
 
 本書は、憲章8章が委譲する「テストカバレッジ最低基準」とテスト方針の正本（SSoT）です。憲章と矛盾する場合は憲章が優先します（MUST）。
@@ -120,8 +121,29 @@ development-process.md「8. 段階導入プロファイル」の比較表と同�
 
 ---
 
-## 5. 改正履歴
+## 5. 契約テスト（Consumer-Driven Contract）
 
+複数ベンダ・複数チームが同時に開発へ参画する場合、統合時点まで不整合が発見されないという失敗モードを
+避けるため、消費者駆動契約テスト（Consumer-Driven Contract Testing）とスタブ提供を行うべきです（SHOULD）。
+
+* 契約の形式は [api-standards.md](api-standards.md) が定める OpenAPI／AsyncAPI 等を正本とし、
+  本書では複写しません（SSoT）。
+* 提供側（プロバイダ）は、消費側（コンシューマ）が契約に基づいて開発・テストできるよう、
+  スタブまたはモックサーバを提供するべきです（SHOULD）。
+* 契約テストは、[architecture/integrations/README.md](../architecture/integrations/README.md) が定める
+  腐敗防止層（ACL）の境界で実施し、連携先の実装詳細への依存を避けます。
+* 単一ベンダ・単一チームの開発では、費用対効果が低い場合に個別プロジェクトの判断で見送ってよい（MAY）。
+
+> **休眠・活性化**: 本節は複数ベンダ・複数チームが参画する開発で活性化します（「4.」冒頭の
+> 休眠パターンと同趣旨）。機械強制は未整備であり、強制台帳に「未整備」として登録します。
+
+---
+
+## 6. 改正履歴
+
+* 0.4.0（2026-09-06）: 「5. 契約テスト（Consumer-Driven Contract）」を新設。複数ベンダ・複数チーム
+  参画時の消費者駆動契約テストとスタブ提供をSHOULDとして追加した。正本記録:
+  [governance/proposals/gp-0019-multi-vendor-standards-and-ledger.md](../governance/proposals/gp-0019-multi-vendor-standards-and-ledger.md)。
 * 0.3.0（2026-08-20）: 「4. テスト品質ゲート（Mutation Score・Spec 由来・認可否定パス）」を新設。カバレッジと mutation score の関係（4.1）、段階導入プロファイル別 mutation score 初期値（未確定。4.2）、受入基準からのテスト導出（4.3）、認可否定パステスト（4.4）、否定パステスト網羅性検証の設計案（4.5・実装は対象外）を追加。正本記録: governance/proposals/gp-0006-test-quality-gates.md（WU-05）。
 * 0.2.0（2026-07-05）: 「3. テストデータ（予約済み識別子の使用）」を新設（RFC 2606 / 6761 / 5737 / 3849、RFC 9457 契約テスト）。
 * 0.1.0（2026-04-01）: 初版ドラフト。
