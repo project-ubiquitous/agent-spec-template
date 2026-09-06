@@ -1,8 +1,8 @@
 # ADOPTION.md — 採用セットアップ手順
 
-* Version: 0.4.0（Proposed / ドラフト）
+* Version: 0.5.1（Proposed / ドラフト）
 * Date: 2026-04-01
-* Last amended: 2026-08-24
+* Last amended: 2026-09-06
 * 上位規範: constitution.md（開発憲章）
 
 本書は、本テンプレートを実プロジェクトへ採用する際の手順書です。統治文書は完成していても、
@@ -105,7 +105,7 @@
 | ゲート | 現状 | 配線が必要な設定 | 強制台帳 |
 | --- | --- | --- | --- |
 | SAST（第一者コード静的解析） | スタック検出・配線ロジックのみ実装。実ツール未配線 | ADR でツールを選定し、環境変数 `SAST_CMD`（または実行可能な `scripts/dev/sast-tool.sh`）を CI に設定 | #40 |
-| アーキテクチャ境界（循環依存の検出） | スタック検出・配線ロジックのみ実装。実ツール未配線 | `architecture/boundaries.md` のレイヤ構成を実体化した上で、採用スタックに応じたツール（import-linter / dependency-cruiser / ArchUnit / go-arch-lint 等）を選定し、環境変数 `ARCH_BOUNDARY_CMD`（または実行可能な `scripts/dev/arch-boundary-tool.sh`）を CI に設定 | #52 |
+| アーキテクチャ境界（循環依存の検出） | スタック検出・配線ロジックのみ実装。実ツール未配線 | `architecture/boundaries.md` のレイヤ構成を実体化した上で、採用スタックに応じたツール（import-linter / dependency-cruiser / ArchUnit / go-arch-lint 等）を選定し、環境変数 `ARCH_BOUNDARY_CMD`（または実行可能な `scripts/dev/arch-boundary-tool.sh`）を CI に設定。既定（モジュラーモノリス。ADR-0009）を採用する場合、レイヤ構成の実体化は任意ではなく MUST（standards/architecture-standards.md「2.」） | #52 |
 | 差分規模の上限（人間ゲートの実質化） | **本テンプレート自身は Class A=200行／Class B=400行で hard-fail 済み**（`governance-gate.yml`）。採用組織はこの値をそのまま使うか、自組織のレビュー体制に合わせて上書きする | 値を変更する場合は `.github/workflows/governance-gate.yml` の env `DIFF_SIZE_LIMIT_CLASS_A` / `DIFF_SIZE_LIMIT_CLASS_B`（整数）を編集する | #46 |
 | ビルド・テストの入口（`build.sh`） | リポジトリ直下でのスタック自動検出（`npm ci` / `pytest` 等）。新規採用向けの既定 | 既存の入口（Makefile / monorepo / tox 等）を持つ場合は環境変数 `BUILD_CMD`（または実行可能な `scripts/dev/build-tool.sh`）を設定する。終了コードはそのまま伝播する（緩和ではない） | #15b |
 | 秘密情報スキャンの baseline（`secrets.sh`） | 全 git 履歴を走査（既定）。既存リポジトリでは過去の混入を必ず検出する | 既存リポジトリでは `.gitleaks-baseline.json` を作成し、**記録された資格情報をすべてローテーション**した上で `governance/exceptions/` に登録する（[ADOPTION-EXISTING.md](ADOPTION-EXISTING.md)「3.1」） | #1 |
@@ -134,6 +134,11 @@
 ---
 
 ## 改正履歴
+
+### [0.5.1] - 2026-09-06
+
+* 「ステップ8」のアーキテクチャ境界（#52）行に、既定（モジュラーモノリス。ADR-0009）採用時はレイヤ構成の実体化が MUST であることを明記した（standards/architecture-standards.md「2.」新設に伴う参照追加。正本記録: [GP-0015](governance/proposals/gp-0015-deployment-unit-standards-and-ledger.md)）。
+* **前版の版数不整合を是正**: 本書冒頭のヘッダは従来 `Version: 0.4.0` のままだったが、本節の直近エントリは既に `[0.5.0] - 2026-08-24` として記録されており、ヘッダが追従していなかった（ヘッダと変更履歴の乖離。原因・混入時期は不明）。本改訂でヘッダを実際の最新版（0.5.0）から正しく増分し、0.5.1 とした。
 
 ### [0.5.0] - 2026-08-24
 
