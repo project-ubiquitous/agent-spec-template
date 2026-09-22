@@ -14,6 +14,7 @@
 | ADR-0006 | dependabot による Actions 版数更新の統治要件（ADR 記載要件のカーブアウト） | accepted | project | 2026-08-08 | [adr-0006-dependabot-governance-carveout.md](adr-0006-dependabot-governance-carveout.md) |
 | ADR-0007 | 図表記法の選定（論理図は Mermaid、物理構成図は CI レンダリング） | proposed | project | 2026-09-05 | [adr-0007-diagram-notation-selection.md](adr-0007-diagram-notation-selection.md) |
 | ADR-0008 | 外部ドキュメントツールへの複製方式（SSoT は Git、外部ツールは派生コピー） | proposed | project | 2026-09-05 | [adr-0008-external-doc-tool-replication.md](adr-0008-external-doc-tool-replication.md) |
+| ADR-0009 | 既定のデプロイ単位方針 | proposed | project | 2026-09-06 | [adr-0009-default-deployment-unit-policy.md](adr-0009-default-deployment-unit-policy.md) |
 
 ## 関係グラフ
 
